@@ -12,13 +12,17 @@ public class Main {
             carName = scanner.next();
             while (true) {
                 System.out.printf("Введите скорость машины №%d:\n", i + 1);
-                carSpeed = scanner.nextInt();
-                if (carSpeed < 0 || carSpeed > 250){
-                    System.out.println("Неправильная скорость");
-                } else {
-                    break;
+
+                if (scanner.hasNextInt()) {
+                    carSpeed = scanner.nextInt();
+                    if (carSpeed > 0 & carSpeed <= 250) {
+                        break;
+                    }
                 }
+                System.out.println("Неправильная скорость");
+                scanner.next();
             }
+
             Car curCar = new Car(carName, carSpeed);
             race.updateLeader(curCar);
         }
