@@ -12,15 +12,20 @@ public class Main {
             carName = scanner.next();
             while (true) {
                 System.out.printf("Введите скорость машины №%d:\n", i + 1);
-
                 if (scanner.hasNextInt()) {
                     carSpeed = scanner.nextInt();
-                    if (carSpeed > 0 & carSpeed <= 250) {
-                        break;
-                    }
+                } else {
+                    carSpeed = -1;
+                    scanner.next();
                 }
-                System.out.println("Неправильная скорость");
-                scanner.next();
+
+                if (carSpeed > 0 & carSpeed <= 250) {
+                    break;
+                } else {
+                    System.out.println("Неправильная скорость");
+                }
+
+
             }
 
             Car curCar = new Car(carName, carSpeed);
